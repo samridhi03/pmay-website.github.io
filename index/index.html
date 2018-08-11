@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+
+<head>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/4.0.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.1/js/bootstrap.min.js"></script>
+
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script> -->
+	    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script> -->
+
+<!-- styling expanding cards -->
+			<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Slabo+27px|Yesteryear'>
+			<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>
+
+			      <!-- <link rel="stylesheet" href="css/style.css"> -->
+<!--  -->
+
+	<title>Pradhan mantri awas yojana</title>
+
+	<link rel="stylesheet" href="../css/style.css" />
+	<link rel="stylesheet" href="../css/slidorion.css" />
+	<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,200,700' rel='stylesheet' type='text/css'>
+
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery.easing.js"></script>
+
+    <script src="../js/jquery.slidorion.min.js"></script>
+
+
+
+<style>
+
+
+
+/*  */
+body {
+  font-family: Arial, sans-serif;
+
+  background-size: cover;
+  height: 100vh;
+}
+
+
+.box1 {
+  width: 400px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.2);
+  padding: 25px;
+  border: 2px solid #fff;
+  border-radius: 20px/50px;
+  background-clip: padding-box;
+  text-align: center;
+}
+
+.box2{
+	width: 300px;
+	margin: 0 auto;
+	background: rgba(255,255,255,0.2);
+	padding: 25px;
+	border: 2px solid #fff;
+	border-radius: 20px/50px;
+	background-clip: padding-box;
+	text-align: center;
+	margin-left:310px;
+	margin-top: -75px;
+
+}
+
+.box3{
+	width: 300px;
+	margin: 0 auto;
+	background: rgba(255,255,255,0.2);
+	padding: 25px;
+	border: 2px solid #fff;
+	border-radius: 20px/50px;
+	background-clip: padding-box;
+	text-align: center;
+	margin-left:620px;
+	margin-top: -95px;
+
+}
+
+.button {
+  font-size: 1em;
+  padding: 10px;
+  color: #fff;
+  border: 2px solid black;
+  border-radius: 20px/50px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.button:hover {
+  background: #06D85F;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: black;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
+}
+/*  */
+
+</style>
+
+
+
+    <script>
+	$(function() {
+		$('#slidorion').slidorion();
+	});
+	</script>
+
+
+
+
+<script>
+var $cell = $('.card');
+
+//open and close card when clicked on card
+$cell.find('.js-expander').click(function() {
+
+  var $thisCell = $(this).closest('.card');
+
+  if ($thisCell.hasClass('is-collapsed')) {
+    $cell.not($thisCell).removeClass('is-expanded').addClass('is-collapsed').addClass('is-inactive');
+    $thisCell.removeClass('is-collapsed').addClass('is-expanded');
+
+    if ($cell.not($thisCell).hasClass('is-inactive')) {
+      //do nothing
+    } else {
+      $cell.not($thisCell).addClass('is-inactive');
+    }
+
+  } else {
+    $thisCell.removeClass('is-expanded').addClass('is-collapsed');
+    $cell.not($thisCell).removeClass('is-inactive');
+  }
+});
+
+//close card when click on cross
+$cell.find('.js-collapser').click(function() {
+
+  var $thisCell = $(this).closest('.card');
+
+  $thisCell.removeClass('is-expanded').addClass('is-collapsed');
+  $cell.not($thisCell).removeClass('is-inactive');
+
+});
+</script>
+
+
+<!-- script for styling objectives -->
+<script>
+$(document).ready(function() {
+
+  $('.popup-link').magnificPopup({
+    removalDelay: 300,
+    type: 'image',
+    callbacks: {
+    beforeOpen: function() {
+       this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure animated ' + this.st.el.attr('data-effect'));
+    }
+  },
+  });
+
+});
+
+</script>
+<!--  -->
+
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+<div class="container-fluid" style="background-color:white" >
+
+				<div class="row" >
+					<div class="col" style="margin-left: 20px">
+						 <img src="logo.JPG" align="left" alt="image" style="float:left">
+					</div>
+					<div class="col-8" style="padding: 20px ;margin-right:30px ">
+					 <h2 style="color:blue ;font-size: 30px ;text-align: center;font-weight:500; line-height: 1.1; color: #337ab7;">Pradhan Mantri Awas Yojana-Housing for All (Urban)</h2>
+					 <h4 style="text-align: center ; color: #337ab7;"> Ministry of Housing and Urban Affair</h4>
+					 <h5 style="text-align: center">Government of India</h5>
+					</div>
+					<div class="col" style="margin-right:40px" >
+					 <img src="logo2.JPG" alt="image2" style="float:right" >
+					</div>
+				</div>
+
+
+</div>
+<!--HEADER ENDS  -->
+
+
+<!-- NAVBAR STARTS -->
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded" style="background-color:#2C3E50;margin-left:10px;margin-right:5px;height:48px" >
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarNavDropdown" >
+			<ul class="navbar-nav">
+				<li class="nav-item  " style="padding-right: 30px ; padding-left: 110px;" >
+					<a class="nav-link" href="#"style="color:white">PPP-Policy </a>
+				</li>
+				<li class="nav-item dropdown"  style="padding-right: 30px">
+								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"style="color:white">
+									Documents
+								</a>
+								<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+									<a class="dropdown-item" href="https://pmaymis.gov.in/PDF/HFA_Guidelines/hfa_Guidelines.pdf" target="blank">Mission Document</a>
+									<a class="dropdown-item" href="http://pmaymis.gov.in/PDF/UserMannual/PMAY_UserMannual.pdf" target="blank">User Manual</a>
+									<a class="dropdown-item" href="https://pmaymis.gov.in/PDF/Workshop_PPT/Workshop_PPT.zip" target="blank">Workshop Ppt</a>
+
+								</div>
+							</li>
+							<li class="nav-item dropdown" style="padding-right: 30px">
+										<a class="nav-link dropdown-toggle" href="https://pmaymis.gov.in/PDF/UserMannual/Disclaimer_English.pdf" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"style="color:white">
+											Disclaimer
+										</a>
+										<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+											<a class="dropdown-item" href="https://pmaymis.gov.in/PDF/UserMannual/Disclaimer_English.pdf"target="blank">English</a>
+											<a class="dropdown-item" href="https://pmaymis.gov.in/PDF/UserMannual/Disclaimer_Hindi.pdf"target="blank">Hindi</a>
+											<a class="dropdown-item" href="marathi.pdf" target="blank">Marathi</a>
+										</div>
+									</li>
+				<li class="nav-item" style="padding-right: 30px">
+								<a class="nav-link" href="https://nhb.org.in/government-scheme/pradhan-mantri-awas-yojana-credit-linked-subsidy-scheme/" target="blank"style="color:white">NPV Subsidy Calculator</a>
+							</li>
+							<li class="nav-item" style="padding-right: 30px">
+										<a class="nav-link" href="#"style="color:white">Search Beneficiary</a>
+									</li>
+									<li class="nav-item dropdown" style="padding-right: 30px">
+												<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"style="color:white">
+													Citizen Assesment
+												</a>
+												<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+													<a class="dropdown-item" href="#" >For Slum Dwellers</a>
+													<a class="dropdown-item" href="#" >Benefit Under Other Three Components</a>
+													<a class="dropdown-item" href="#" >Print Assesment</a>
+													<a class="dropdown-item" href="#" >Track Assesment Status</a>
+												</div>
+											</li>
+
+											<li class="nav-item dropdown" style="padding-right: 30px">
+														<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"style="color:white">
+															General Information
+														</a>
+														<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+															<a class="dropdown-item" href="#" >Eligibility</a>
+															<a class="dropdown-item" href="#" style="color:white">Schemes</a>
+
+														</div>
+													</li>
+
+													<li class="nav-item  " style="padding-right: 30px ; padding-left: 10px;" >
+														<button type="button" class="btn btn-outline-primary"style="color:white" href="login.html">ULB LOGIN</button>
+													 </li>
+
+			</ul>
+		</div>
+	</nav>
+<!-- NAVBAR ENDS -->
+
+
+
+<div class="row">
+	<div class="col-sm-6">
+
+<!-- START SLID0RION -->
+	<div id="slidorion">
+
+		<div id="slider" style="width:640px;margin-left:50px;margin-top:-10px">
+			<div class="slider-image" rel="section1">
+				<img src="pm_modi.jpg" width="690" height="375" style="margin-top:-5px" />
+			</div>
+			<div class="slider-image" rel="section2">
+				<img src="pmay-04.jpg" width="690" height="375" style="margin-top:-5px"/>
+			</div>
+			<div class="slider-image" rel="section3">
+				<img src="pmay.jpg" width="690" height="375"style="margin-top:-5px" />
+			</div>
+		</div>
+
+		<div id="accordion" style="margin-left:700px;margin-top:-400px;height:110px">
+			<div class="header"><a class="slider-link" rel="section1" style="background-color:#2C3E50;color:white">pmay1</a></div>
+			<div class="content">
+				<p>In the Valley of Peace, Po Ping is revelling in his fulfilled dreams as he serves as the fabled Dragon Warrior protecting his home with his heroes now his closest friends. However, Po and company learn that the murderous Lord Shen of Gongman City is threatening the land with a fearsome new weapon that could mean the end of kung fu forever.</p>
+				<a href="http://www.imdb.com/title/tt1302011/">Read more</a>
+			</div>
+			<div class="header"><a class="slider-link" rel="section2" style="background-color:#2C3E50;color:white">pmay2</a></div>
+			<div class="content">
+				<p>Batman raises the stakes in his war on crime. With the help of Lieutenant Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the city streets. But they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as The Joker.</p>
+				<a href="http://www.imdb.com/title/tt0468569/">Read more</a>
+			</div>
+			<div class="header"><a class="slider-link" rel="section3" style="background-color:#2C3E50;color:white">pmay3</a></div>
+			<div class="content">
+				<p>Top London cop, PC Nicholas Angel is good. Too good. And to stop the rest of his team looking bad, he is reassigned to the quiet town of Sandford. Everything seems quiet for Angel, until two actors are found decapitated. It is called an accident, but Angel isn't going to accept that, especially when more and more people turn up dead.</p>
+				<a href="http://www.imdb.com/title/tt0425112/">Read more</a>
+			</div>
+		</div>
+
+	</div>
+</div>
+<!-- col-sm-6 ends -->
+
+<!--  col-sm-4 starts-->
+<!--leaderboard start  -->
+				<div class="col-md-4">
+					<!-- <span class="border border-dark"> -->
+					 <div class="container" >
+						 <div class="card border-info mb-3" style="width: 30rem;height:500px;float:right;margin-right:-175px;margin-top:10px">
+							<div class="card-header" style="text-align:center;background-color:#2C3E50;color:white">NEWS WIRE</div>
+							 <div class="card-body text-info">
+
+								 <div class="card border-info mb-3" style="max-width: 30rem;">
+              <!--LISTS OF ITEMS STARTS  -->
+									 <ul class="list-group list-group-flush">
+
+								<!--LIST 1 ITEM STARTS  -->
+										<li class="list-group-item" style="height:70px">
+												<div class="row">
+
+													<div class="col-sm-2" >
+													<img src="news1.jpg" style="width:70px;height:40px">
+													</div>
+
+													<div class="col-sm" style="text-align:right">
+													<p>Noida, Greater Noida residents who got homes after Jan 2017 now eligible for PMAY interest subsidy</p>
+													</div>
+
+												</div>
+										 </li>
+							 <!--LIST 1 ITEM ENDS  -->
+
+							 <!--  LIST 2 ITEM STARTS-->
+							 <li class="list-group-item" style="height:70px">
+							 		<div class="row">
+
+							 			<div class="col-sm-2" >
+							 			<img src="news2.jpg" style="width:70px;height:40px">
+							 			</div>
+
+							 			<div class="col-sm" style="text-align:right">
+							 			<p>Over 3.2 lakh affordable houses sanctioned under PMAY (Urban), investment of Rs 18,203 crore approved</p>
+							 			</div>
+
+							 		</div>
+							  </li>
+								<!--  LIST 2 ITEM ENDS-->
+
+							<!--LIST 3 ITEM STARTS  -->
+								<li class="list-group-item" style="height:70px">
+										<div class="row">
+
+											<div class="col-sm-2" >
+											<img src="news3.jpg" style="width:70px;height:40px">
+											</div>
+
+											<div class="col-sm" style="text-align:right">
+											<p>March 23, 2018 05:37 PM IST
+Govt to meet target of 11mn homes under PMAY before 2022: Puri</p>
+											</div>
+
+										</div>
+								 </li>
+								<!-- LIST 3 ITEM ENDS -->
+
+								<!--LIST 4 ITEM STARTS  -->
+									<li class="list-group-item" style="height:70px">
+											<div class="row">
+
+												<div class="col-sm-2" >
+												<img src="news1.jpg" style="width:70px;height:40px">
+												</div>
+
+												<div class="col-sm" style="text-align:right">
+												<p>Noida, Greater Noida residents who got homes after Jan 2017 now eligible for PMAY interest subsidy</p>
+												</div>
+
+											</div>
+									 </li>
+									<!-- LIST 4 ITEM ENDS -->
+
+									<!--LIST 5 ITEM STARTS  -->
+										<li class="list-group-item" style="height:70px">
+												<div class="row">
+
+													<div class="col-sm-2" >
+													<img src="news2.jpg" style="width:70px;height:40px">
+													</div>
+
+													<div class="col-sm" style="text-align:right">
+													<p>Over 3.2 lakh affordable houses sanctioned under PMAY (Urban), investment of Rs 18,203 crore approved</p>
+													</div>
+
+												</div>
+										 </li>
+										<!-- LIST 5 ITEM ENDS -->
+
+										<!--LIST 6 ITEM STARTS  -->
+											<li class="list-group-item" style="height:70px">
+													<div class="row">
+
+														<div class="col-sm-2" >
+														<img src="news3.jpg" style="width:70px;height:40px">
+														</div>
+
+														<div class="col-sm" style="text-align:right">
+														<p>Govt to meet target of 11mn homes under PMAY before 2022: Puri</p>
+														</div>
+
+													</div>
+											 </li>
+											<!-- LIST 6 ITEM ENDS -->
+
+											<!--LIST 7 ITEM STARTS  -->
+												<li class="list-group-item" style="height:70px">
+														<div class="row">
+
+															<div class="col-sm-2" >
+															<img src="news1.jpg" style="width:70px;height:40px">
+															</div>
+
+															<div class="col-sm" style="text-align:right">
+															<p>Govt to meet target of 11mn homes under PMAY before 2022: Puri</p>
+															</div>
+
+														</div>
+												 </li>
+												<!-- LIST 7 ITEM ENDS -->
+
+
+									</ul>
+<!-- LISTS OF ITEM ENDS -->
+							 </div>
+						</div>
+
+
+				 </div>
+				 <!-- row-end -->
+				</div>
+			</div>
+<!--  col-sm-4 ends-->
+
+
+
+
+<!-- <div class="container-fluid"> -->
+
+	<!-- Services section -->
+		<section id="what-we-do" style="margin-top:-170px">
+			<div class="container-fluid">
+
+
+				<div class="row mt-5" style="margin-left:40px">
+
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4" >
+
+						<div class="card" style="width:440px;height:70px;margin-top:-9px;background-color: #566573">
+
+							<h5 style="text-align:center;margin-top:-20px;margin-left:440px;font-size:17.5px;position:relative"><strong>Objectives</strong></h5>
+
+							<div class="card-block block-1">
+								<!-- <h3 class="card-title">Special title</h3> -->
+								<p class="card-text" style="color:white;margin-top:-10px">In-situ as well as ex-situ slum rehabilitation with participation of private developers.
+										Credit linked subsidy for affordable housing to poor</p>
+								<!-- <a href="javascript:void();" title="Read more" class="read-more" >Read more<i class="fa fa-angle-double-right ml-2"></i></a> -->
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+						<div class="card" style="width:440px;height:70px;margin-top:-10px;background-color: #566573">
+							<div class="card-block block-2">
+								<!-- <h3 class="card-title">Special title</h3> -->
+								<p class="card-text" style="color:white">Credit linked subsidy for affordable housing to poor</p>
+								<!-- <a href="javascript:void();" title="Read more" class="read-more" >Read more<i class="fa fa-angle-double-right ml-2"></i></a> -->
+							</div>
+						</div>
+					</div>
+
+				<div class="row" style="margin-left:5px">
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+						<div class="card" style="width:440px;height:70px;margin-top:10px;background-color: #566573" >
+							<div class="card-block block-4" style="margin-top:-10px">
+								<!-- <h3 class="card-title">Special title</h3> -->
+								<p class="card-text" style="color:white">Affordable housing in partnership with private sector</p>
+								<!-- <a href="javascript:void();" title="Read more" class="read-more" >Read more<i class="fa fa-angle-double-right ml-2"></i></a> -->
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+						<div class="card" style="width:440px;height:70px;margin-left:135px;margin-top:10px;background-color: #566573">
+							<div class="card-block block-5" style="margin-top:-10px">
+								<!-- <h3 class="card-title">Special title</h3> -->
+								<p class="card-text" style="color:white">Subsidy for individuals for construction of house</p>
+								<!-- <a href="javascript:void();" title="Read more" class="read-more" >Read more<i class="fa fa-angle-double-right ml-2"></i></a> -->
+							</div>
+						</div>
+					</div>
+
+		</section>
+		<!-- /Services section -->
+
+</div>
+<!--  -->
+
+
+<!-- what is pmay <section>
+</section> -->
+<div class="container-fluid"style="margin:30px">
+<div class="row">
+<div class="col-sm-6" >
+  <h3 style="margin-left:30px;margin-top:5px">What is Pradhan Mantri Awas Yojana(PMAY) ?</h3><br>
+  <p ><iframe width="600" height="330" src="https://www.youtube.com/embed/ilVy0VNwSvQ" frameborder="0" allowfullscreen style="margin-left:40px"></iframe></p>
+</div>
+
+<div class="col-sm-6"style="margin-top:50px;margin-left:-50px;">
+  <h3><b>About</b></h3><hr>
+  <p>Pradhan Mantri Awaas Yojana was launched in June 2015 with an aim to provide affordable housing to urban poor.</p>
+  <p>The features of Pradhan Mantri Awas Yojana are that the government will provide an interest subsidy of 6.5% on housing loans availed by the
+     beneficiaries for a period of 20 years under credit link subsidy scheme(CLSS) from the start of a loan. the houses under Pradhan Mantri Awas
+      Yojana would be constructed through a technology that is eco-friendly, while allotting ground floors in any housing scheme under PMAY, preference
+      will be given to differently abled and older persons.</p>
+
+  <p><h5>Finance</h5>The government has approved an investment of ₹439.22 billion (US$6.7 billion) for construction of 6,83,724
+     houses for urban poor
+    including central assistance commitment of ₹100.50 billion (US$1.5 billion) by April 2016</p>
+</div>
+</div>
+</div>
+<!--  -->
+
+<hr>
+
+<!--ojective starts  -->
+<div class="container">
+
+<h2 style="text-align:center">DETAILS</h2>
+
+	<div class="row">
+
+<ul>
+<!--  button 1 starts-->
+	<li>
+<div class="box1" style="margin-left:-100px">
+	<a class="button" href="#popup1" style="color:black">REQUIREMENTS BEFORE APPLYING</a>
+</div>
+
+<div id="popup1" class="overlay">
+	<div class="popup">
+		<h3><b>Requirements before applying</b></h3>
+
+		<a class="close" href="#">&times;</a>
+		<div class="content">
+
+			<p>Eligibility under EWS/LIG Scheme</p>
+			<p>Eligibility under EWS/LIG Scheme</p>
+			<p>Eligibility under EWS/LIG Scheme</p>
+
+		</div>
+	</div>
+</div>
+</li>
+<!--  button 1 ends-->
+
+<!-- button2 starts -->
+<li>
+<div class="box2" >
+<a class="button" href="#popup1" style="color:black">HOW TO APPLY ?</a>
+</div>
+
+<div id="popup1" class="overlay">
+<div class="popup">
+	<h2>Here i am</h2>
+	<a class="close" href="#">&times;</a>
+	<div class="content">
+		Thank to pop me out of that button, but now i'm done so you can close this window.
+	</div>
+</div>
+</div>
+</div>
+</li>
+<!--  button 2 ends-->
+
+<!-- button3 starts -->
+<li>
+<div class="box3" >
+<a class="button" href="#popup1" style="color:black">HOW TO APPLY ?</a>
+</div>
+
+<div id="popup1" class="overlay">
+<div class="popup">
+	<h2>Here i am</h2>
+	<a class="close" href="#">&times;</a>
+	<div class="content">
+		Thank to pop me out of that button, but now i'm done so you can close this window.
+	</div>
+</div>
+</div>
+</div>
+</li>
+<!--  button 3 ends-->
+
+
+
+</ul>
+</div>
+</div>
+<!-- objective ends -->
+
+
+<br>
+<hr>
+
+
+<div class="container-fluid">
+	<div class="row">
+<!-- NOTICS STARTS -->
+<!--  col-sm-4 starts-->
+				<div class="col-md-4">
+					<!-- <span class="border border-dark"> -->
+					 <div class="container"style="float:right" >
+						 <div class="card border-info mb-3" style="width: 28rem;height:500px;float:right;">
+							<div class="card-header" style="text-align:center;background-color:#2C3E50;color:white">NOTICES</div>
+							 <div class="card-body text-info">
+
+								 <div class="card border-info mb-3" style="max-width: 28rem;margin:10px">
+
+									 <ul class="list-group list-group-flush">
+
+												<!-- notice 1 item -->
+										<li class="list-group-item" style="height:60px">
+											<div class="row">
+
+												<p style="text-align:center">Inviting comments from the general public and all
+stakeholders on the draft Model PPP
+Policy</p>
+
+											</div>
+										 </li>
+										 <!--  notice 1 item-->
+
+										 <!-- notice 2 item -->
+									 <li class="list-group-item" style="height:60px">
+										 <div class="row">
+
+ 											<p style="text-align:center">Inviting comments from the general public and all
+ stakeholders on the draft Model PPP
+ Policy</p>
+
+ 										</div>
+									 </li>
+									 <!--  notice 2 item-->
+
+									 <!-- notice 3 item -->
+								 <li class="list-group-item" style="height:60px">
+									 <div class="row">
+
+ 										<p style="text-align:center">Inviting comments from the general public and all
+ stakeholders on the draft Model PPP
+ Policy</p>
+
+ 									</div>
+								 </li>
+								 <!--  notice 3 item-->
+
+								 <!-- notice 4 item -->
+							 <li class="list-group-item" style="height:60px">
+								 <div class="row">
+
+ 									<p style="text-align:center">Inviting comments from the general public and all
+ stakeholders on the draft Model PPP
+ Policy</p>
+
+ 								</div>
+							 </li>
+							 <!--  notice 4 item-->
+							 <li class="list-group-item" style="height:60px">
+								 <div class="row">
+
+ 									<p style="text-align:center">Inviting comments from the general public and all
+ stakeholders on the draft Model PPP
+ Policy</p>
+
+ 								</div>
+							 </li>
+
+							 <!--  notice 5 item-->
+							 <li class="list-group-item" style="height:60px">
+								 <div class="row">
+
+										<p style="text-align:center">Inviting comments from the general public and all
+	stakeholders on the draft Model PPP
+	Policy</p>
+
+									</div>
+							 </li>
+
+							 <!--  notice 6 item-->
+							 <li class="list-group-item" style="height:60px">
+								 <div class="row">
+
+										<p style="text-align:center">Inviting comments from the general public and all
+	stakeholders on the draft Model PPP
+	Policy</p>
+
+									</div>
+							 </li>
+
+
+
+									</ul>
+
+							 </div>
+						</div>
+				 </div>
+				</div>
+			</div>
+<!--  col-sm-4 ends-->
+<!-- NOTICES ENDS -->
+
+<div class="col-sm">
+
+
+
+<!-- cards container-fluid STARTS -->
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="card-deck">
+      <div class="card">
+        <img class="card-img-top" src="news1.jpg" alt="Card image cap" style="width:300px">
+        <div class="card-block">
+          <a href="https://www.sarkariyojna.co.in/pradhan-mantri-awas-yojana-list-2018-pmay-u-list-of-beneficiaries/"><p class="card-text">Pradhan Mantri Awas Yojana - Credit Linked Subsidy Scheme</p></a>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="news2.jpg" alt="Card image cap" style="width:300px">
+        <div class="card-block">
+					<a href="https://www.sarkariyojna.co.in/pradhan-mantri-awas-yojana-list-2018-pmay-u-list-of-beneficiaries/"><p class="card-text">Pradhan Mantri Awas Yojana - Credit Linked Subsidy Scheme</p></a>
+
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="scheme3.jpg" alt="Card image cap" style="width:300px">
+        <div class="card-block">
+					<a href="https://www.sarkariyojna.co.in/pradhan-mantri-awas-yojana-list-2018-pmay-u-list-of-beneficiaries/"><p class="card-text">Pradhan Mantri Awas Yojana - Credit Linked Subsidy Scheme</p></a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+	<!--  row of cards ends-->
+<br>
+<!--  -->
+<div class="row">
+	<div class="card-deck">
+		<div class="card">
+			<img class="card-img-top" src="news1.jpg" alt="Card image cap" style="width:300px">
+			<div class="card-block">
+				<a href="https://www.sarkariyojna.co.in/pradhan-mantri-awas-yojana-list-2018-pmay-u-list-of-beneficiaries/"><p class="card-text">Pradhan Mantri Awas Yojana - Credit Linked Subsidy Scheme</p></a>
+
+			</div>
+		</div>
+		<div class="card">
+			<img class="card-img-top" src="scheme1.jpg" alt="Card image cap">
+			<div class="card-block">
+				<a href="https://www.sarkariyojna.co.in/pradhan-mantri-awas-yojana-list-2018-pmay-u-list-of-beneficiaries/"><p class="card-text">Pradhan Mantri Awas Yojana - Credit Linked Subsidy Scheme</p></a>
+
+			</div>
+		</div>
+		<div class="card">
+			<img class="card-img-top" src="scheme2.jpg" alt="Card image cap">
+			<div class="card-block">
+				<a href="https://www.sarkariyojna.co.in/pradhan-mantri-awas-yojana-list-2018-pmay-u-list-of-beneficiaries/"><p class="card-text">Pradhan Mantri Awas Yojana - Credit Linked Subsidy Scheme</p></a>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!--  row of cards ends-->
+
+</div>
+<!-- cards container-fluid ends -->
+</div>
+<!-- col-sm ends -->
+</div>
+<!-- row ends -->
+</div>
+<!-- container ends -->
+
+
+<!--start of footer -->
+<div class="container-fluid">
+			<!--Footer-->
+			<footer class="page-footer font-small blue-grey lighten-5 pt-0" style="margin-top: 10px;color:black">
+
+					<div style="  background-color: #34495E;margin-left:30px;margin-right:0px;height:25px">
+.
+					</div>
+
+					<!--Footer Links-->
+					<div class="container-fluid">
+							<div class="row " style="color:black">
+									<!--First column-->
+
+									<div class="col-sm col-md-4 col-xs-2  dark-grey-text" style="margin-left:0px;">
+<br>
+											<img src="pmay.jpg" width="100px" align="right"/>
+											<h6 class="title font-weight-bold" style="margin-left:0px">Pradhan Mantri Awas Yojana-<em>Housing for All</em></h6>
+											<hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+											<p style="margin-left:0px">Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit
+													amet, consectetur adipisicing elit.</p>
+									</div>
+									<!--/.First column-->
+
+									<!--Second column-->
+									<div class="col-sm dark-grey-text">
+										<br>
+											<h6 class="title font-weight-bold">SERVICES</h6>
+											<hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+											<p><a href="#" class="dark-grey-text" style="color:black">Online Services</a></p>
+											<p><a href="#!" class="dark-grey-text" style="color:black">PMAY CARE</a></p>
+											<p><a href="#!" class="dark-grey-text" style="color:black">EFAQ</a></p>
+											<p><a href="#!" class="dark-grey-text" style="color:black">PMAY App Store</a></p>
+											<p><a href="#!" class="dark-grey-text" style="color:black">Feedback/Survey</a></p>
+
+									</div>
+									<!--/.Second column-->
+
+									<!--Third column-->
+									<div class="col-sm dark-grey-text">
+										<br>
+											<h6 class="title font-weight-bold">INFORMATION</h6>
+											<hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+											<p><a href="#!" class="dark-grey-text" style="color:black">About PMAY</a></p>
+											<p><a href="#!" class="dark-grey-text" style="color:black">E-Newsletter</a></p>
+											<p><a href="#!" class="dark-grey-text" style="color:black">Latest Updates</a></p>
+											<p><a href="#!" class="dark-grey-text" style="color:black">Website Policy</a></p>
+											<p><a href="#!" class="dark-grey-text" style="color:black">Terms And Conditions</a></p>
+
+									</div>
+									<!--/.Third column-->
+
+									<!--Fourth column-->
+									<div class="col-sm dark-grey-text">
+										<br>
+											<h6 class="title font-weight-bold">CONTACT</h6>
+											<hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+											<p><i class="fa fa-home mr-3"></i> Mumbai 10012, INDIA</p>
+											<p><i class="fa fa-envelope mr-3"></i> info@example.com</p>
+											<p><i class="fa fa-phone mr-3"></i> + 01 234 567 88</p>
+											<p><i class="fa fa-print mr-3"></i> + 01 234 567 89</p>
+									</div>
+									<!--/.Fourth column end-->
+
+									<!--Fifth column  -->
+									<div class="col-sm  dark-grey-text" style="align:right;width:100px" >
+<br>
+										<img src="nic.in.png" width="200">
+									</div>
+									<!--Fifth column end -->
+
+							</div>
+					</div>
+					<!--/.Footer Links-->
+
+					<!-- Copyright-->
+					<div class="footer-copyright py-3 text-center">
+							<div class="container-fluid">
+									© 2017 Copyright: <a href="#"> PMAY.com</a>
+							</div>
+					</div>
+					<!--/.Copyright -->
+
+			</footer>
+			<!--/.Footer-->
+
+
+
+</body>
+
+
+</html>
